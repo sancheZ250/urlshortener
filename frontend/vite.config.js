@@ -8,11 +8,11 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:8000', //адрес бэкенда
+        target: 'http://backend:8000', //адрес бэкенда
         changeOrigin: true,
       },
       '/auth':{
-        target: 'http://localhost:8000',
+        target: 'http://backend:8000',
         changeOrigin: true,
       },
       },
