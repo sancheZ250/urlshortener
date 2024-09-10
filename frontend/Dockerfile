@@ -17,4 +17,4 @@ COPY . .
 EXPOSE 5173
 
 # Step 6: Запускаем Vite в режиме разработки
-CMD ["npm", "run", "dev"]
+CMD ["npm", "run", "dev", "--", "--host"]

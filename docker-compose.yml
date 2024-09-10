@@ -8,8 +8,8 @@ services:
       DJANGO_SUPERUSER_USERNAME: admin1
       DJANGO_SUPERUSER_PASSWORD: admin
       DJANGO_SUPERUSER_EMAIL: admin@example.com
-    volumes:
-      - ./url_shortener:/app
+    # volumes:
+    #   - ./url_shortener:/app
     ports:
       - "8000:8000"
 
