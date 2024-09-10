@@ -1,25 +1,20 @@
-version: '3.9'
+version: '3.8'
 
 services:
   backend:
-    build:
-      context: ./url_shortener
-      dockerfile: Dockerfile
+    build: ./url_shortener
+    container_name: backend
+    environment:
+      DJANGO_SUPERUSER_USERNAME: admin1
+      DJANGO_SUPERUSER_PASSWORD: admin
+      DJANGO_SUPERUSER_EMAIL: admin@example.com
     volumes:
       - ./url_shortener:/app
     ports:
       - "8000:8000"
-    environment:
-      - PYTHONUNBUFFERED=1
-      - DJANGO_SUPERUSER_USERNAME=admin1
-      - DJANGO_SUPERUSER_PASSWORD=admin
-      - DJANGO_SUPERUSER_EMAIL=admin@example.com
-  
+
   frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-    # volumes:
-    #   - ./frontend:/app
+    build: ./frontend
+    container_name: frontend
     ports:
-      - "5173:5173"
+      - "3000:5173" 

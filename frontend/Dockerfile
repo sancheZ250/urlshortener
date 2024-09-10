@@ -1,19 +1,20 @@
 # Frontend Dockerfile
-FROM node:18-alpine
 
+# Step 1: Используем официальный образ Node.js для Vue.js и Vite
+FROM node:18
+
+# Step 2: Устанавливаем рабочую директорию
 WORKDIR /app
 
-# Copy the package.json and package-lock.json files first to leverage Docker cache
+# Step 3: Копируем файлы package.json и package-lock.json и устанавливаем зависимости
 COPY package*.json ./
-
-# Install dependencies
 RUN npm install
 
-# Copy the rest of the application code
-COPY . /app/
+# Step 4: Копируем весь проект во фронтенд контейнер
+COPY . .
 
-# Expose the port for Vite
+# Step 5: Открываем порт 5173 для разработки
 EXPOSE 5173
 
-# Start the Vite development server
+# Step 6: Запускаем Vite в режиме разработки
 CMD ["npm", "run", "dev"]

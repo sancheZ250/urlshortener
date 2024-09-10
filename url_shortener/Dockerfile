@@ -1,20 +1,20 @@
-# Use the official Python image
-FROM python:3.10
+# Backend Dockerfile
 
-# Set the working directory
+# Step 1: Используем официальный образ Python для Django
+FROM python:3.12
+
+# Step 2: Устанавливаем рабочую директорию
 WORKDIR /app
 
-# Copy the requirements file into the container
-COPY requirements.txt /app/
-
-# Install the dependencies
+# Step 3: Копируем requirements.txt и устанавливаем зависимости
+COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the Django app code into the container
-COPY . /app/
+# Step 4: Копируем весь проект в контейнер
+COPY . .
 
-# Expose the port that Django will run on
+# Step 5: Открываем порт 8000 для разработки Django
 EXPOSE 8000
 
-# Run migrations and create superuser automatically
-CMD ["sh", "-c", "python manage.py migrate && python manage.py makemigrations && python manage.py createsuperuser --noinput && python manage.py runserver 0.0.0.0:8000"]
+# Step 7: Запускаем миграции и сервер разработки Django
+CMD ["sh", "-c", "python manage.py migrate && python manage.py createsuperuser --noinput && python manage.py runserver 0.0.0.0:8000"]
